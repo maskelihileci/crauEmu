@@ -7,6 +7,10 @@ from uEmu import *
 
 CRAUEMU_USE_AS_SCRIPT = True    # Set to `False` if you want to load crauEmu automatically as IDA Plugin
 
+import sys
+if sys.version_info[0] >= 3:
+    unicode = str
+
 
 from PyQt5.QtWidgets import (
     QStyledItemDelegate, QTableView, QWidget,
@@ -126,7 +130,7 @@ class RopModel(QAbstractTableModel):
                     return QBrush(QColor(Qt.yellow))
             return QVariant()
         except Exception as ex:
-            print ex
+            print (ex)
     
     def setData(self, index, value, role):
         row = index.row()
